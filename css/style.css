@@ -49,6 +49,7 @@ body {
     border: none;
     transition: 250ms;
     background-color: inherit;
+    margin-bottom: 50px;
 }
 
 .selection-options button:hover {
