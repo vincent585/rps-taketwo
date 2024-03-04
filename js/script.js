@@ -1,8 +1,11 @@
 const choices = ["rock", "paper", "scissors"];
 
 const selectionOptions = document.querySelectorAll(".selection-options button");
+const playerScore = document.querySelector(".scoreboard p:nth-child(1)");
+const computerScore = document.querySelector(".scoreboard p:nth-child(2)");
+const roundResult = document.querySelector(".round-result p");
 
-selectionOptions.forEach((selectionOption) => selectionOption.addEventListener("click", () => playRound(selectionOption.value, getComputerChoice)));
+selectionOptions.forEach((selectionOption) => selectionOption.addEventListener("click", () => playRound(selectionOption.value, getComputerChoice())));
 
 function getComputerChoice() {
     let choiceIndex = Math.floor(Math.random() * choices.length);
@@ -16,7 +19,7 @@ function playRound(playerChoice, computerChoice) {
 
     if (playerChoice === computerChoice) {
         message = `You both picked ${playerChoice} - It's a tie!`;
-        console.log(message);
+        roundResult.textContent = message;
         return 0;
     } else if (playerChoice === "rock") {
         return evaluateRock(computerChoice);
@@ -37,7 +40,7 @@ function evaluateRock(computerChoice) {
         message = "Paper covers rock - you lose!";
         result = -1;
     }
-    console.log(message);
+    roundResult.textContent = message;
     return result;
 }
 
@@ -51,7 +54,7 @@ function evaluatePaper(computerChoice) {
         message = "Scissors cut paper - you lose!";
         result = -1;
     }
-    console.log(message);
+    roundResult.textContent = message;
     return result;
 }
 
@@ -65,7 +68,7 @@ function evaluateScissors(computerChoice) {
         message = "Rock smashes scissors - you lose!";
         result = -1;
     }
-    console.log(message);
+    roundResult.textContent = message;
     return result;
 }
 
