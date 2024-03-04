@@ -72,35 +72,6 @@ function evaluateScissors(computerChoice) {
     return result;
 }
 
-function playGame() {
-    let playerWins = 0;
-    let computerWins = 0;
-    for (let round = 0; round < 5; round++) {
-        let playerSelection = getUserChoice();
-        let result = playRound(playerSelection, getComputerChoice());
-
-        result < 0 ? computerWins += 1 : playerWins += result;
-    }
-
-    return checkWinner(playerWins, computerWins);
-}
-
-function getUserChoice() {
-    let playerSelection = "";
-    while (!choices.includes(playerSelection.toLowerCase())) {
-        playerSelection = prompt("Choose one: Rock, Paper, or Scissors?", "");
-        if (playerSelection === "" || playerSelection === null) {
-            alert("You can't pick nothing!");
-        } else if (!choices.includes(playerSelection.toLowerCase())) {
-            alert("Only Rock, Paper, or Scissors will work here.");
-        } else {
-            break;
-        }
-    }
-
-    return playerSelection.toLowerCase();
-}
-
 function checkWinner(playerWins, computerWins) {
     let message = `Player score: ${playerWins} ----- Computer score: ${computerWins}. `;
     if (playerWins === computerWins) {
