@@ -7,7 +7,11 @@ const playerScorePara = document.querySelector(".scoreboard p:nth-child(1)");
 const computerScorePara = document.querySelector(".scoreboard p:nth-child(2)");
 const roundResult = document.querySelector(".round-result p");
 
-selectionOptions.forEach((selectionOption) => selectionOption.addEventListener("click", () => playRound(selectionOption.value, getComputerChoice())));
+selectionOptions.forEach((selectionOption) => selectionOption.addEventListener("click", roundHandler));
+
+function roundHandler(event) {
+    playRound(event.target.value, getComputerChoice());
+}
 
 function getComputerChoice() {
     let choiceIndex = Math.floor(Math.random() * choices.length);
@@ -23,12 +27,14 @@ function playRound(playerChoice, computerChoice) {
         message = `You both picked ${playerChoice} - It's a tie!`;
         roundResult.textContent = message;
     } else if (playerChoice === "rock") {
-        return evaluateRock(computerChoice);
+        evaluateRock(computerChoice);
     } else if (playerChoice === "scissors") {
-        return evaluateScissors(computerChoice);
+        evaluateScissors(computerChoice);
     } else if (playerChoice === "paper") {
-        return evaluatePaper(computerChoice);
+        evaluatePaper(computerChoice);
     }
+
+    checkWinner(playerScore, computerScore);
 }
 
 function evaluateRock(computerChoice) {
@@ -74,12 +80,15 @@ function evaluateScissors(computerChoice) {
 }
 
 function checkWinner(playerWins, computerWins) {
-    let message = `Player score: ${playerWins} ----- Computer score: ${computerWins}. `;
-    if (playerWins === computerWins) {
-        return message + "It's a tie!";
-    } else if (playerWins > computerWins) {
-        return message + "You won the game!";
-    } else {
-        return message + "You lose the game!";
+    if (playerWins === 5) {
+        roundResult.textContent += " You win the game!";
+        endGame();
+    } else if (computerWins === 5) {
+        roundResult.textContent += " The computer wins the game!";
+        endGame();
     }
+}
+
+function endGame() {
+    selectionOptions.forEach((selectionOption) => selectionOption.removeEventListener("click", roundHandler));
 }
