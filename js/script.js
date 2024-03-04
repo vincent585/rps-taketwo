@@ -5,12 +5,13 @@ let computerScore = 0;
 const selectionOptions = document.querySelectorAll(".selection-options button");
 const playerScorePara = document.querySelector(".scoreboard p:nth-child(1)");
 const computerScorePara = document.querySelector(".scoreboard p:nth-child(2)");
-const roundResult = document.querySelector(".round-result p");
+const roundResult = document.querySelector(".round-result");
 
 selectionOptions.forEach((selectionOption) => selectionOption.addEventListener("click", roundHandler));
 
 function roundHandler(event) {
-    playRound(event.target.value, getComputerChoice());
+    console.log(event.currentTarget)
+    playRound(event.currentTarget.value, getComputerChoice());
 }
 
 function getComputerChoice() {

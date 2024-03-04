@@ -4,25 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
   <script src="./js/script.js" defer></script>
   <title>Rock Paper Scissors</title>
 </head>
 
-<body>
-  <h1>Rock Paper Scissors</h1>
+<body class="kode-mono-body">
   <div class="game-container">
+    <h1>Rock Paper Scissors</h1>
     <div class="scoreboard">
       <p>Your score: 0</p>
       <p>Computer Score: 0</p>
     </div>
     <div class="round-result">
-      <p></p>
     </div>
     <div class="selection-options">
-      <button type="submit" value="rock">Rock</button>
-      <button type="submit" value="paper">Paper</button>
-      <button type="submit" value="scissors">Scissors</button>
+      <button type="submit" value="rock"><img src="./images/stone.png" alt="rock icon"></button>
+      <button type="submit" value="paper"><img src="./images/paper-plane.png" alt="paper icon"></button>
+      <button type="submit" value="scissors"><img src="./images/scissor.png" alt="scissor icon"></button>
     </div>
   </div>
 </body>
